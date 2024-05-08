@@ -27,7 +27,7 @@ export default function Home() {
 
           <div className="px-12 py-16 border-b border-[#F2F2F4]">
             <div className="bg-[#F4F4F5] px-4 py-3 rounded-full inline-flex gap-4">
-              <a href="https://clerk.com/docs" target="_blank">
+              <a href="/" target="_blank">
                 <svg
                   width="24"
                   height="24"
