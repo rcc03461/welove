@@ -1,3 +1,5 @@
+// 'use client'
+
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { UserDetails } from "../components/user-details";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
@@ -8,11 +10,13 @@ import { Footer } from "../components/footer";
 import { DASHBOARD_CARDS } from "../consts/cards";
 
 export default async function DashboardPage() {
-  const { userId } = auth().protect();
-
+  const { userId } = auth().protect({
+      unauthenticatedUrl:"/sign-in"
+  });
+  
   const user = await clerkClient.users.getUser(userId);
 
-  if (!user) return null;
+  if (!user) return auth().redirectToSignIn();
 
   return (
     <>
